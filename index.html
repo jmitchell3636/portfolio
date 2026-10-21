@@ -47,6 +47,13 @@
   .hero h1{font-family:var(--sans);font-weight:800;font-size:clamp(48px,8vw,96px);line-height:.98;letter-spacing:-.03em}
   .hero .statement{font-size:24px;line-height:1.55;margin-top:32px;color:#eaf1fa}
   .hero .facts{margin-top:14px;color:var(--sky);font-family:var(--sans);font-size:17px}
+
+  .brief{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px}
+  .hero h2.brief-h{font-family:var(--sans);font-weight:600;font-size:15px;color:var(--sky);border:0;padding:0;margin:0 0 10px;letter-spacing:0}
+  .brief ul{list-style:none}
+  .brief li{font-family:var(--sans);font-size:18px;line-height:1.45;color:#dce8f7;padding:12px 0;border-top:1px solid rgba(156,194,240,.25)}
+  .brief li b{color:#fff;font-weight:700}
+  .brief li span{display:block;font-size:15px;color:var(--sky);margin-top:2px}
   .numbers{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border-top:1px solid rgba(156,194,240,.35)}
   .numbers div{padding:28px 32px 44px 0}
   .numbers div + div{padding-left:32px;border-left:1px solid rgba(156,194,240,.35)}
@@ -94,11 +101,11 @@
   .skills strong{font-family:var(--sans);font-weight:700;font-size:17px;color:var(--blue-deep);margin-right:6px}
 
   /* ---------- footer ---------- */
-  .close{background:var(--blue-night);color:#e6eef9;padding:104px 0 48px}
-  .close .lead{text-wrap:balance;font-family:var(--sans);font-weight:800;font-size:clamp(30px,4.4vw,48px);line-height:1.15;letter-spacing:-.02em;color:#fff}
+  .close{background:var(--blue-night);color:#e6eef9;padding:96px 0 88px}
+  .close .lead{font-family:var(--sans);font-weight:800;font-size:clamp(24px,2vw,29px);line-height:1.15;letter-spacing:-.02em;color:#fff}
   .close .sub{margin-top:16px;font-size:20px;color:#c9dbf2}
-  .contact{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 40px;margin-top:56px;
-    padding:32px 0;border-top:1px solid rgba(156,194,240,.3);border-bottom:1px solid rgba(156,194,240,.3)}
+  .contact{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 40px;margin-top:40px;
+    padding-top:32px;border-top:1px solid rgba(156,194,240,.3)}
   .contact div{font-family:var(--sans)}
   .contact .k{font-size:14px;color:var(--sky);font-weight:500}
   .contact a{display:inline-block;margin-top:4px;color:#fff;font-size:18px;font-weight:600}
@@ -110,7 +117,8 @@
     .top{gap:20px;flex-wrap:wrap}
     .hero-body{padding-top:40px}
     .hero .statement{font-size:21px}
-    .numbers{grid-template-columns:1fr}
+    .numbers,.brief{grid-template-columns:1fr}
+    .brief{gap:28px}
     .numbers div,.numbers div + div{padding:22px 0;border-left:0;border-bottom:1px solid rgba(156,194,240,.35)}
     .numbers div:last-child{border-bottom:0;padding-bottom:40px}
     .projects.page{padding-top:64px}
@@ -137,12 +145,26 @@
     </nav>
     <div class="hero-body">
       <h1>Jake Mitchell</h1>
-      <p class="statement">I build baseball analytics tools that coaches and players use to prepare and get better. This past summer, that meant running Trackman and building the reporting platform the Nashua Silver Knights used all season.</p>
-      <p class="facts">M.S. in Business Analytics at UMass Amherst, finishing December 2026. Former four-year college corner infielder at Salve Regina.</p>
+      <div class="brief">
+        <div>
+          <h2 class="brief-h">Experience</h2>
+          <ul>
+            <li><b>Director of Baseball Data and Analytics</b>, UMass Lowell Baseball<span>January 2026–present</span></li>
+            <li><b>Baseball Analytics Intern</b>, Nashua Silver Knights<span>May–August 2026</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="brief-h">Education</h2>
+          <ul>
+            <li><b>M.S. in Business Analytics</b>, UMass Amherst<span>December 2026</span></li>
+            <li><b>B.S. in Finance</b>, Salve Regina University<span>May 2025</span></li>
+          </ul>
+        </div>
+      </div>
       <div class="numbers">
-        <div><b>18 of 18</b><span>backtest seasons where my MLB projections beat the Marcel baseline</span></div>
-        <div><b>2026</b><span>full season of Trackman reports for the Silver Knights coaching staff</span></div>
-        <div><b>4.0</b><span>graduate GPA in Business Analytics at UMass Amherst</span></div>
+        <div><b>18 of 18</b><span>Backtest seasons where my MLB projections beat the Marcel baseline</span></div>
+        <div><b>2026</b><span>Full season of Trackman reports for the Silver Knights coaching staff</span></div>
+        <div><b>4.0</b><span>Graduate GPA in Business Analytics at UMass Amherst</span></div>
       </div>
     </div>
   </div>
@@ -159,7 +181,7 @@
     <ul>
       <li>Scouting report generator that builds pitcher and hitter reports and exports them as print-ready PDFs</li>
       <li>Stuff+ pitch model built with XGBoost and pitcher-grouped cross-validation</li>
-      <li>xBA, xwOBA, and catcher framing</li>
+      <li>Expected-stat leaderboards (xBA and xwOBA) and catcher framing</li>
       <li>3D pitch tunneling from the catcher's view, marked at the hitter's commit point</li>
     </ul>
     <p class="built">Built with Python, Streamlit, pandas, and XGBoost.</p>
@@ -170,7 +192,7 @@
     <div class="plates">
       <figure class="dark">
         <img src="images/diamondintel-tunnel.png" width="1600" height="1000" loading="lazy" alt="3D pitch tunneling view of a four-seam fastball, slider, and changeup from the catcher's perspective">
-        <figcaption>Pitch tunneling from the catcher's view. The yellow frame is the commit point, about 24 feet from the plate, where the fastball, slider, and changeup still look alike.</figcaption>
+        <figcaption>Pitch tunneling from the catcher's view.</figcaption>
       </figure>
       <figure>
         <img src="images/diamondintel-pitcher.png" width="1496" height="710" loading="lazy" alt="Pitcher scouting report with Stuff+ by pitch and overall pitch mix">
@@ -265,15 +287,13 @@
 
 <footer class="close">
   <div class="page">
-    <p class="lead">Looking for player development and baseball R&amp;D roles.</p>
-    <p class="sub">I'd be glad to walk through either project or talk about a role on your staff.</p>
+    <p class="lead">Looking for baseball operations, player development, and analyst roles.</p>
     <div class="contact">
       <div><div class="k">Email</div><a href="mailto:jakemitchell3@outlook.com">jakemitchell3@outlook.com</a></div>
       <div><div class="k">LinkedIn</div><a href="https://www.linkedin.com/in/jake-mitchell25" target="_blank" rel="noopener">jake-mitchell25</a></div>
       <div><div class="k">X</div><a href="https://x.com/bsballstats" target="_blank" rel="noopener">@bsballstats</a></div>
       <div><div class="k">Resume</div><a href="resume.pdf">Download PDF</a></div>
     </div>
-    <p class="fine">Jake Mitchell, Nashua, New Hampshire</p>
   </div>
 </footer>
 
