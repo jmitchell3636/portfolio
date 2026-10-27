@@ -87,6 +87,39 @@
   figcaption{font-family:var(--sans);font-size:15px;color:var(--slate);margin-top:14px;line-height:1.5;
     padding-left:14px;border-left:3px solid var(--blue)}
 
+
+  .chart{border:1px solid var(--blue-line);border-radius:4px;padding:28px 28px 22px;background:#fff}
+  .chart figcaption{margin-top:18px}
+  .coef{display:block;width:100%;height:auto;font-family:var(--sans)}
+  .coef .grid{stroke:var(--rule);stroke-width:1}
+  .coef .zero{stroke:var(--slate);stroke-width:1.5}
+  .coef .tick{font-size:15px;fill:var(--slate)}
+  .coef .name{font-size:19px;font-weight:600;fill:var(--ink)}
+  .coef .val{font-size:17px;font-weight:600;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}
+  .coef .ns .val{fill:var(--slate);font-weight:500}
+  .coef .ci{stroke-width:2.5;stroke-linecap:round}
+  .coef .sig .ci{stroke:var(--blue)}
+  .coef .ns .ci{stroke:#7d8796}
+  .coef .sig .pt{fill:var(--blue);stroke:#fff;stroke-width:2}
+  .coef .ns .pt{fill:#fff;stroke:#7d8796;stroke-width:2.5}
+  .coef .hit{fill:transparent}
+  .coef .row:hover .hit,.coef .row:focus .hit{fill:var(--blue-wash)}
+  .coef .row:focus{outline:none}
+
+
+  .coef-table{display:none;width:100%;border-collapse:collapse;font-family:var(--sans);font-size:16px}
+  .coef-table th,.coef-table td{text-align:left;padding:10px 8px 10px 0;border-bottom:1px solid var(--rule)}
+  .coef-table thead th{font-size:14px;font-weight:500;color:var(--slate)}
+  .coef-table tbody th{font-weight:600}
+  .coef-table td:nth-child(2){font-weight:700;color:var(--blue)}
+  .coef-table .ns td{color:var(--slate);font-weight:500}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  @media (max-width:700px){
+    .coef{display:none}
+    .coef-table{display:table}
+    .chart{padding:18px 18px 16px}
+  }
+
   /* ---------- record ---------- */
   .record{background:var(--blue-wash);padding:96px 0 104px;border-top:1px solid var(--blue-line)}
   .group + .group{margin-top:72px}
@@ -231,6 +264,69 @@
       <figure>
         <img src="images/diamondintel-hitter.png" width="1531" height="565" loading="lazy" alt="Hitter report with season line, contact quality, and swing decisions">
         <figcaption>Hitter report: season line, contact quality, and swing decisions compared with the league.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="project">
+    <h3>Marketing Spend and ROI</h3>
+    <div class="sub">Regression analysis of which marketing channels pay off</div>
+    <p>An analysis of 100 days of spending on social media, email, and TV ads against revenue, built to decide where a marketing budget should go. A multiple regression on the three channels explains about 90% of the day-to-day variation in revenue.</p>
+    <ul>
+      <li>Cleaned missing values and added a marketing efficiency measure (revenue per dollar spent)</li>
+      <li>Explored distributions, monthly trends, and channel correlations</li>
+      <li>Estimated each channel's return with simple and multiple linear regression in statsmodels</li>
+      <li>Recommended shifting budget toward TV and social media, where returns were strongest</li>
+    </ul>
+    <p class="built">Built with Python, pandas, statsmodels, matplotlib, and seaborn.</p>
+    <div class="go">
+      <a href="https://github.com/jmitchell3636/Marketing-Expenditure-and-Revenue-Analysis" target="_blank" rel="noopener">View the analysis on GitHub</a>
+    </div>
+    <div class="plates">
+      <figure class="chart">
+          <svg class="coef" viewBox="0 10 1000 270" role="img" aria-labelledby="coef-t coef-d">
+          <title id="coef-t">Revenue returned per extra dollar of spend, by channel</title>
+          <desc id="coef-d">Multiple regression estimates with 95% confidence intervals. TV ads: $10.53 (9.26 to 11.80). Social media: $8.91 (6.54 to 11.27). Email: -$0.59 (-4.48 to 3.31), not statistically significant.</desc>
+          <line x1="235" y1="30" x2="235" y2="236" class="grid"/>
+          <text x="235" y="262" class="tick" text-anchor="middle">−$5</text>
+          <line x1="410" y1="30" x2="410" y2="236" class="zero"/>
+          <text x="410" y="262" class="tick" text-anchor="middle">$0</text>
+          <line x1="585" y1="30" x2="585" y2="236" class="grid"/>
+          <text x="585" y="262" class="tick" text-anchor="middle">$5</text>
+          <line x1="760" y1="30" x2="760" y2="236" class="grid"/>
+          <text x="760" y="262" class="tick" text-anchor="middle">$10</text>
+          <g class="row sig" tabindex="0"><title>TV ads: $10.53 per extra $1 (95% CI 9.26 to 11.80)</title>
+          <rect x="0" y="40" width="1000" height="60" class="hit"/>
+          <text x="184" y="76" class="name" text-anchor="end">TV ads</text>
+          <line x1="734.0" y1="70" x2="822.9" y2="70" class="ci"/>
+          <line x1="734.0" y1="62" x2="734.0" y2="78" class="ci"/><line x1="822.9" y1="62" x2="822.9" y2="78" class="ci"/>
+          <circle cx="778.4" cy="70" r="8" class="pt"/>
+          <text x="840.9" y="76" class="val">$10.53 per $1</text></g>
+          <g class="row sig" tabindex="0"><title>Social media: $8.90 per extra $1 (95% CI 6.54 to 11.27)</title>
+          <rect x="0" y="112" width="1000" height="60" class="hit"/>
+          <text x="184" y="148" class="name" text-anchor="end">Social media</text>
+          <line x1="639.0" y1="142" x2="804.4" y2="142" class="ci"/>
+          <line x1="639.0" y1="134" x2="639.0" y2="150" class="ci"/><line x1="804.4" y1="134" x2="804.4" y2="150" class="ci"/>
+          <circle cx="721.7" cy="142" r="8" class="pt"/>
+          <text x="822.4" y="148" class="val">$8.91 per $1</text></g>
+          <g class="row ns" tabindex="0"><title>Email: −$0.59 per extra $1 (95% CI -4.48 to 3.31), not significant (p = 0.77)</title>
+          <rect x="0" y="184" width="1000" height="60" class="hit"/>
+          <text x="184" y="220" class="name" text-anchor="end">Email</text>
+          <line x1="253.3" y1="214" x2="525.7" y2="214" class="ci"/>
+          <line x1="253.3" y1="206" x2="253.3" y2="222" class="ci"/><line x1="525.7" y1="206" x2="525.7" y2="222" class="ci"/>
+          <circle cx="389.5" cy="214" r="8" class="pt"/>
+          <text x="543.7" y="220" class="val">No clear effect</text></g>
+          </svg>
+        <table class="coef-table">
+          <caption class="sr">Revenue returned per extra dollar of spend</caption>
+          <thead><tr><th scope="col">Channel</th><th scope="col">Per extra $1</th><th scope="col">95% range</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">TV ads</th><td>$10.53</td><td>$9.26 to $11.80</td></tr>
+            <tr><th scope="row">Social media</th><td>$8.91</td><td>$6.54 to $11.27</td></tr>
+            <tr class="ns"><th scope="row">Email</th><td>−$0.59</td><td>No clear effect</td></tr>
+          </tbody>
+        </table>
+        <figcaption>Revenue returned per extra dollar of spend, with 95% confidence intervals. Email spend showed no statistically significant effect.</figcaption>
       </figure>
     </div>
   </article>
